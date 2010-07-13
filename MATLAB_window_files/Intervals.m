@@ -11,6 +11,9 @@ function [retval] = onlineRun(data_struct, input)
 beep off;  % otherwise played through speakers to animal!
 format compact; 
 
+addpath('~/Library/Application Support/MWorks/MatlabToolbox/tools-mh');
+addpath('~/Library/Application Support/MWorks/MatlabToolbox');
+
 ds = data_struct;
 
 % debug
@@ -105,7 +108,7 @@ retval = input;
 
 %% run subfunctions
 try
-  addpath('/Users/histed/git/MWorks/MatlabToolbox/tools-mh');
+%% addpath('/Users/Shared/Library/Application Support/MWorks/MatlabToolbox/tools-mh');
   
   input = saveMatlabState(data_struct, input);
   tic
@@ -113,7 +116,7 @@ try
     plotOnlineHist(data_struct, input);
   end
   toc
-  input = testUpload(data_struct, input);
+%%  input = testUpload(data_struct, input);
 
 catch ex
   disp('??? Error in subfunction; still saving variables for next trial')
