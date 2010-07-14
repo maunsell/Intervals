@@ -11,8 +11,6 @@ function [retval] = onlineRun(data_struct, input)
 beep off;  % otherwise played through speakers to animal!
 format compact; 
 
-addpath('~/Library/Application Support/MWorks/MatlabToolbox/tools-mh');
-addpath('~/Library/Application Support/MWorks/MatlabToolbox');
 
 ds = data_struct;
 
@@ -22,8 +20,11 @@ ds = data_struct;
 % First call after pressing "play" in client
 if nargin == 1 || ~isfield(input, 'trialSinceReset')
     % init input
-    disp('First trial, initializing input');
-    input.trialSinceReset = 1;
+    disp('First trial, initializing');
+	addpath('~/Library/Application Support/MWorks/MatlabToolbox/tools-mh');
+	addpath('~/Library/Application Support/MWorks/MatlabToolbox');
+
+	input.trialSinceReset = 1;
     input.reactTimesMs = {};
     input.holdTimesMs = {};
     input.tooFastTimeMs = [];

@@ -117,11 +117,14 @@ title('reaction times');
 %% 4 - smoothed perf curve
 axH = subplot(spSz{:},2);
 hold on;
-plot(smooth(double(successIx), ceil(nTrial/10), 'lowess'));
-lH = plot(smooth(double(successIx), nTrial, 'lowess'));
+%plot(smooth(double(successIx), ceil(nTrial/10), 'lowess'));
+plot(smooth1(double(successIx), 'gauss', [2], 3));
+%lH = plot(smooth(double(successIx), nTrial, 'lowess'));
+lH = plot(smooth1(double(successIx), 'gauss', [2], 3));
 set(lH, 'Color', 'r', ...
         'LineWidth', 3);
-lH2 = plot(smooth(double(successIx), 100, 'lowess'));
+%lH2 = plot(smooth(double(successIx), 100, 'lowess'));
+lH2 = plot(smooth1(double(successIx), 'gauss', [2], 3));
 set(lH2, 'Color', 'k', ...
         'LineWidth', 2);
 ylabel('pct correct');
@@ -152,7 +155,8 @@ if sum(largeIx) > 0
 end
 set(pH1, 'LineStyle', 'none', ...
         'Marker', 'x');
-pH2 = plot(smooth(hSDiffsSec, 5, 'lowess'), 'r');
+%pH2 = plot(smooth(hSDiffsSec, 5, 'lowess'), 'r');
+pH2 = plot(smooth1(hSDiffsSec, 'gauss', [2], 3), 'r');
 
 %plot(diff(holdStarts)/1000, 'x');
 ylabel('trial start time diff (s)');
@@ -179,7 +183,8 @@ set(h1, 'LineStyle', 'none', ...
         'Color', 'b');
 
 hold on;
-pH2 = plot(smooth(trsPerMin, 50, 'loess'));
+%pH2 = plot(smooth(trsPerMin, 50, 'loess'));
+pH2 = plot(smooth1(trsPerMin, 'gauss', [2], 3));
 set(pH2, 'Color', 'k', ...
          'LineWidth', 3);
 
@@ -201,8 +206,10 @@ title(sprintf('Last 6 (sec): %s', mat2str(round(hSDiffsSec(fN:end)))));
 % 6 - hold times over time
 axH = subplot(spSz{:}, 8);
 hold on;
-hH(1) = plot(smooth(holdV, 50, 'loess'));
-hH(2) = plot(smooth(holdV, 250, 'loess'));
+%hH(1) = plot(smooth(holdV, 50, 'loess'));
+%hH(2) = plot(smooth(holdV, 250, 'loess'));
+hH(1) = plot(smooth1(holdV, 'gauss', [2], 3));
+hH(2) = plot(smooth1(holdV, 'gauss', [2], 3));
 set(hH(2), 'Color', 'k', ...
            'LineWidth', 3);
 hRange = [0 prctile(holdV, 95)];

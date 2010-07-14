@@ -19,7 +19,7 @@ if input.subjectNum < 1
   error('Must set subjectNum to save data');
 end
 
-input.savedDataName = sprintf('/Library/MonkeyWorks/DataFiles/data-i%03d-%s.mat', ...
+input.savedDataName = sprintf('~/Library/Application Support/MWorks/DataFiles/data-i%03d-%s.mat', ...
                               input.subjectNum, datestr(now, 'yymmdd'));
 
 %% compute elapsed time
