@@ -15,13 +15,16 @@ end
 set(figH, 'Position', figPos);
 spSz = {3,3};
 
-% some data processing
-nPts = length(input.holdTimesMs);
-nTrial = length(input.trialOutcomeCell);
+numPoints = length(input.holdTimesMs);
+numTrials = length(input.trialOutcomeCell);
+
 % sometimes on client restart we have empty elements here; pad with
 % NaN and hope they match up; I should figure out why they are missing
+
 emptyIx = cellfun(@isempty, input.holdTimesMs); 
-if sum(emptyIx) > 0, input.holdTimesMs{emptyIx} = NaN; end
+if sum(emptyIx) > 0
+	input.holdTimesMs{emptyIx} = NaN; 
+end
 holdV = [input.holdTimesMs{:}];
 
 successIx = strcmp(input.trialOutcomeCell, 'success');
@@ -29,7 +32,8 @@ failureIx = strcmp(input.trialOutcomeCell, 'failure');
 ignoreIx = strcmp(input.trialOutcomeCell, 'ignore');
 
 %% 1 - total hold time histogram
-axH = subplot(spSz{:},1);
+
+axH = subplot(spSz{:}, 1);
 maxFail = max(holdV(find(failureIx)));
 if maxFail > 2000
   maxX = 3000;
@@ -38,25 +42,25 @@ elseif maxFail > 2500
 else
   maxX = 2000;
 end
-visIx = holdV<=maxX;
+visIx = holdV <= maxX;
 nVisPts = sum(visIx);
 if nVisPts > 50
-  binWidth = iqr(holdV(visIx))./nVisPts.^(1/3); % robust version of std
-  nBins = ceil(maxX./binWidth);
+  binWidth = iqr(holdV(visIx)) ./ nVisPts.^(1/3);	% robust version of std
+  nBins = ceil(maxX ./ binWidth);
 else
   nBins = 10;
 end
 edges = linspace(0, maxX, nBins);
 Ns = histc(holdV(find(successIx)), edges);
 Nf = histc(holdV(find(failureIx)), edges);
-if sum(Ns)+sum(Nf) > 0
+if sum(Ns) + sum(Nf) > 0
   bH = bar(edges, [Ns(:),Nf(:)], 'stacked');
-  set(bH, 'BarWidth', 1, ...
-          'LineStyle', 'none');
+  set(bH, 'BarWidth', 1, 'LineStyle', 'none');
 end
 hold on;
-xLim = [0 maxX+50];
-set(gca, 'XLim', xLim);
+xLim = [0 maxX + 50];
+%set(gca, 'XLim', xLim);
+set(gca, 'XLim', [0 input.reactTimeMs]);
 yLim = get(gca, 'YLim');
 
 title('total hold times');
@@ -65,21 +69,22 @@ if ~isempty(input.tooFastTimeMs)
   yLim = get(gca, 'YLim');
   plot(input.tooFastTimeMs * [1 1], yLim, 'k--');
 end
+
 %%%%%%%%%%%%%%%%
 
 %% 2 - react time CDF
 axH = subplot(spSz{:},4);
-cdfplot([input.reactTimesMs{:}]);
-set(gca, 'XLim', [-1000 1000], ...
-         'YLim', [0 1]);
+cdfplot([input.reactionTimesMS{:}]);
+%set(gca, 'XLim', [-1000 1000], 'YLim', [0 1]);
+set(gca, 'XLim', [0 input.reactTimeMs], 'YLim', [0 1]);
 title(sprintf('median hold %4.1fms, react %4.1fms', ...
-              median([input.holdTimesMs{:}]), mean([input.reactTimesMs{:}])));
+              median([input.holdTimesMs{:}]), mean([input.reactionTimesMS{:}])));
 %%%%%%%%%%%%%%%%
 
 %% 3 - react time PDF
 axH = subplot(spSz{:},7);
-nPts = length(input.reactTimesMs);
-reactV = [input.reactTimesMs{:}];
+numPoints = length(input.reactionTimesMS);
+reactV = [input.reactionTimesMS{:}];
 visIx = reactV<=maxX;
 nVisPts = sum(visIx);
 if nVisPts > 50
@@ -91,9 +96,9 @@ end
 edges = linspace(-1000, 1000, nBins);
 binSize = edges(2)-edges(1);
 
-emptyIx = cellfun(@isempty, input.reactTimesMs);   % see above holdTimesM
-if sum(emptyIx) > 0, input.reactTimesMs{emptyIx} = NaN; end
-rV = [input.reactTimesMs{:}];
+emptyIx = cellfun(@isempty, input.reactionTimesMS);   % see above holdTimesM
+if sum(emptyIx) > 0, input.reactionTimesMS{emptyIx} = NaN; end
+rV = [input.reactionTimesMS{:}];
 
 Ns = histc(rV(successIx), edges);
 Nf = histc(rV(failureIx), edges);
@@ -117,8 +122,8 @@ title('reaction times');
 %% 4 - smoothed perf curve
 axH = subplot(spSz{:},2);
 hold on;
-plot(smooth(double(successIx), ceil(nTrial/10), 'lowess'));
-lH = plot(smooth(double(successIx), nTrial, 'lowess'));
+plot(smooth(double(successIx), ceil(numTrials/10), 'lowess'));
+lH = plot(smooth(double(successIx), numTrials, 'lowess'));
 set(lH, 'Color', 'r', ...
         'LineWidth', 3);
 lH2 = plot(smooth(double(successIx), 100, 'lowess'));
@@ -131,8 +136,8 @@ nFail = sum(failureIx);
 nIg = sum(ignoreIx);
 suptitle(sprintf('%03d: Correct %d (%4.1f%%), early %d (%4.1f%%), ign %d (%4.1f%%) total %d', ...
                  input.subjectNum, ...
-                 nCorr, nCorr/nTrial*100, nFail, nFail/nTrial*100, ...
-                 nIg, nIg/nTrial*100, nTrial));
+                 nCorr, nCorr/numTrials*100, nFail, nFail/numTrials*100, ...
+                 nIg, nIg/numTrials*100, numTrials));
 
 %%%%%%%%%%%%%%%%
 
