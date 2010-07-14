@@ -1,7 +1,6 @@
-function [retval] = onlineRun(data_struct, input)
+function [retval] = Intervals(data_struct, input)
 
 % This function processes event data and saves variables in input.
-%
 % Then it calls plot functions in a
 % try-catch block so that errors in plot functions don't affect
 % variable saving.
@@ -11,27 +10,24 @@ function [retval] = onlineRun(data_struct, input)
 beep off;  % otherwise played through speakers to animal!
 format compact; 
 
-
 ds = data_struct;
 
 % debug
 %dumpEvents(ds); 
 
 % First call after pressing "play" in client
-if nargin == 1 || ~isfield(input, 'trialSinceReset')
-    % init input
-    disp('First trial, initializing');
+
+if nargin == 1 || ~isfield(input, 'trialSinceReset')	% initialize on first pass
+	disp('First trial, initializing');
 	addpath('~/Library/Application Support/MWorks/MatlabToolbox/tools-mh');
 	addpath('~/Library/Application Support/MWorks/MatlabToolbox');
-
-	input.trialSinceReset = 1;
-    input.reactTimesMs = {};
+    input.trialSinceReset = 1;
+    input.reactionTimesMS = {};
     input.holdTimesMs = {};
     input.tooFastTimeMs = [];
     input.trialOutcomeCell = {};
     input.holdStartsMs = {};
     input.juiceTimesMsCell = {};
-
 else
   input.trialSinceReset = input.trialSinceReset+1;
   assert(all(input.tooFastTimeMs > 1));
@@ -61,6 +57,8 @@ for iC = 1:nConsts
   end
 end
 
+disp(input.reactTimeMs);
+
 %% process corrects
 if ~isempty(mwGetEventValue(ds.events, ds.event_codec, ...
                              'success', [], 'ignoreMissing'))
@@ -87,30 +85,24 @@ totalHoldTimeMs = mwGetEventValue(ds.events, ds.event_codec, 'tTotalReqHoldTimeM
 leverDownUs = mwGetEventTime(ds.events, ds.event_codec, 'leverResult', 1, 1);
 leverUpUs = mwGetEventTime(ds.events, ds.event_codec, 'leverResult', 2, 0);
 
-disp(totalHoldTimeMs); 
-
 %reactTimeMs = (leverUpUs - stimOnUs) / 1000;
 holdTimeMs = (leverUpUs - leverDownUs) / 1000;
 %reactTimeMs = (holdTimeMs - totalHoldTimeMs);
 reactTimeMs = holdTimeMs;
+disp(reactTimeMs); 
 
 % add to array
 input.holdStartsMs{input.trialSinceReset} = leverDownUs/1000;
 input.holdTimesMs{input.trialSinceReset} = holdTimeMs;
-input.reactTimesMs{input.trialSinceReset} = reactTimeMs;
+input.reactionTimesMS{input.trialSinceReset} = reactTimeMs;
 
 % total reward times
 juiceAmtsUs = mwGetEventValue(ds.events, ds.event_codec, 'juice', 'all');
 juiceAmtsMs = juiceAmtsUs(juiceAmtsUs~=0)/1000;
 input.juiceTimesMsCell{thisTrialN} = juiceAmtsMs;
 
-%% save variables for next trial
-retval = input;
-
 %% run subfunctions
 try
-%% addpath('/Users/Shared/Library/Application Support/MWorks/MatlabToolbox/tools-mh');
-  
   input = saveMatlabState(data_struct, input);
   tic
   if mod(input.trialSinceReset, 3) == 0
@@ -118,7 +110,6 @@ try
   end
   toc
 %%  input = testUpload(data_struct, input);
-
 catch ex
   disp('??? Error in subfunction; still saving variables for next trial')
   printErrorStack(ex);
