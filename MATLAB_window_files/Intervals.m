@@ -57,7 +57,7 @@ for iC = 1:nConsts
   end
 end
 
-disp(input.reactTimeMs);
+%disp(input.reactTimeMs);
 
 %% process corrects
 if ~isempty(mwGetEventValue(ds.events, ds.event_codec, ...

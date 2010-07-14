@@ -115,28 +115,23 @@ end
 hold on;
 yLim = get(gca, 'YLim');
 plot([0 0], yLim, 'k');
-set(gca, 'XLim', [-1010 1010]);
+%set(gca, 'XLim', [-1010 1010]);
+set(gca, 'XLim', [0 input.reactTimeMs]);
 title('reaction times');
 %%%%%%%%%%%%%%%%
 
 %% 4 - smoothed perf curve
 axH = subplot(spSz{:},2);
 hold on;
-<<<<<<< HEAD
 %plot(smooth(double(successIx), ceil(nTrial/10), 'lowess'));
 plot(smooth1(double(successIx), 'gauss', [2], 3));
 %lH = plot(smooth(double(successIx), nTrial, 'lowess'));
 lH = plot(smooth1(double(successIx), 'gauss', [2], 3));
-=======
-plot(smooth(double(successIx), ceil(numTrials/10), 'lowess'));
-lH = plot(smooth(double(successIx), numTrials, 'lowess'));
->>>>>>> origin/master
 set(lH, 'Color', 'r', ...
         'LineWidth', 3);
 %lH2 = plot(smooth(double(successIx), 100, 'lowess'));
 lH2 = plot(smooth1(double(successIx), 'gauss', [2], 3));
-set(lH2, 'Color', 'k', ...
-        'LineWidth', 2);
+set(lH2, 'Color', 'k', 'LineWidth', 2);
 ylabel('pct correct');
 set(gca, 'YLim', [0 1]);
 nCorr = sum(successIx);
