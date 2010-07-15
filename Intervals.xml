@@ -13,13 +13,13 @@
             <variable _id="id39636697" tag="doHoldTone" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
             <variable _id="id39636711" tag="holdRepeatIntervalMs" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
             <variable _id="id39636725" tag="reactTimeMs" scope="global" logging="when_changed" default_value="1250" type="integer" persistant="1"></variable>
-            <variable _id="id39636739" tag="react1TimeMS" scope="global" logging="when_changed" default_value="250" type="integer"></variable>
-            <variable _id="id39636751" tag="react1DurMS" scope="global" logging="when_changed" default_value="500" type="integer"></variable>
-            <variable _id="id39636763" tag="react2TimeMS" scope="global" logging="when_changed" default_value="1000" type="integer"></variable>
-            <variable _id="id39636775" tag="react2DurMS" scope="global" logging="when_changed" default_value="500" type="integer"></variable>
-            <variable _id="id39636787" tag="rewardMS" scope="global" logging="when_changed" default_value="50" type="integer"></variable>
-            <variable _id="id39636799" tag="reward1MS" scope="global" logging="when_changed" default_value="75" type="integer"></variable>
-            <variable _id="id39636810" tag="reward2MS" scope="global" logging="when_changed" default_value="75" type="integer"></variable>
+            <variable _id="id39636739" tag="react1TimeMS" scope="global" logging="when_changed" default_value="250" type="integer" persistant="1"></variable>
+            <variable _id="id39636751" tag="react1DurMS" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
+            <variable _id="id39636763" tag="react2TimeMS" scope="global" logging="when_changed" default_value="1000" type="integer" persistant="1"></variable>
+            <variable _id="id39636775" tag="react2DurMS" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
+            <variable _id="id39636787" tag="rewardMS" scope="global" logging="when_changed" default_value="50" type="integer" persistant="1"></variable>
+            <variable _id="id39636799" tag="reward1MS" scope="global" logging="when_changed" default_value="75" type="integer" persistant="1"></variable>
+            <variable _id="id39636810" tag="reward2MS" scope="global" logging="when_changed" default_value="75" type="integer" persistant="1"></variable>
             <variable _id="id39636822" tag="randReqHoldMaxMs" scope="global" logging="when_changed" default_value="300" type="integer" persistant="1"></variable>
             <variable _id="id39636836" tag="fixedReqHoldTimeMs" scope="global" logging="when_changed" default_value="400" type="integer" persistant="1"></variable>
             <variable _id="id39636851" tag="earlyTimeoutMs" scope="global" logging="when_changed" default_value="200" type="integer" persistant="1"></variable>
