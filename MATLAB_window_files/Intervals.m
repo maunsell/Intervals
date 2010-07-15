@@ -89,7 +89,7 @@ leverUpUs = mwGetEventTime(ds.events, ds.event_codec, 'leverResult', 2, 0);
 holdTimeMs = (leverUpUs - leverDownUs) / 1000;
 %reactTimeMs = (holdTimeMs - totalHoldTimeMs);
 reactTimeMs = holdTimeMs;
-disp(reactTimeMs); 
+disp(sprintf('Hold time %.0f ms', holdTimeMs)); 
 
 % add to array
 input.holdStartsMs{input.trialSinceReset} = leverDownUs/1000;

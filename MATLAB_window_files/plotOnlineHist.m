@@ -63,7 +63,8 @@ xLim = [0 maxX + 50];
 set(gca, 'XLim', [0 input.reactTimeMs]);
 yLim = get(gca, 'YLim');
 
-title('total hold times');
+title(sprintf('mean hold %4.0f ms', mean([input.holdTimesMs{:}])));
+xlabel('time (ms)');
 
 if ~isempty(input.tooFastTimeMs)
   yLim = get(gca, 'YLim');
@@ -74,50 +75,50 @@ end
 
 %% 2 - react time CDF
 axH = subplot(spSz{:},4);
-cdfplot([input.reactionTimesMS{:}]);
-%set(gca, 'XLim', [-1000 1000], 'YLim', [0 1]);
+cdfplot([input.holdTimesMs{:}]);
 set(gca, 'XLim', [0 input.reactTimeMs], 'YLim', [0 1]);
-title(sprintf('median hold %4.1fms, react %4.1fms', ...
-              median([input.holdTimesMs{:}]), mean([input.reactionTimesMS{:}])));
+xlabel('time (ms)');
+ylabel('hold times < time');
+title('hold density function');
+
 %%%%%%%%%%%%%%%%
 
 %% 3 - react time PDF
-axH = subplot(spSz{:},7);
-numPoints = length(input.reactionTimesMS);
-reactV = [input.reactionTimesMS{:}];
-visIx = reactV<=maxX;
-nVisPts = sum(visIx);
-if nVisPts > 50
-  binWidth = iqr(reactV(visIx))./nVisPts.^(1/3); % robust version of std
-  nBins = ceil(2000./binWidth);
-else
-  nBins = 10;
-end
-edges = linspace(-1000, 1000, nBins);
-binSize = edges(2)-edges(1);
+%axH = subplot(spSz{:},7);
+%numPoints = length(input.reactionTimesMS);
+%reactV = [input.reactionTimesMS{:}];
+%visIx = reactV<=maxX;
+%nVisPts = sum(visIx);
+%if nVisPts > 50
+%  binWidth = iqr(reactV(visIx))./nVisPts.^(1/3); % robust version of std
+%  nBins = ceil(2000./binWidth);
+%else
+%  nBins = 10;
+%end
+%edges = linspace(-1000, 1000, nBins);
+%binSize = edges(2)-edges(1);
 
-emptyIx = cellfun(@isempty, input.reactionTimesMS);   % see above holdTimesM
-if sum(emptyIx) > 0, input.reactionTimesMS{emptyIx} = NaN; end
-rV = [input.reactionTimesMS{:}];
+%emptyIx = cellfun(@isempty, input.reactionTimesMS);   % see above holdTimesM
+%if sum(emptyIx) > 0, input.reactionTimesMS{emptyIx} = NaN; end
+%rV = [input.reactionTimesMS{:}];
 
-Ns = histc(rV(successIx), edges);
-Nf = histc(rV(failureIx), edges);
-if sum(Ns)+sum(Nf) > 0
-  bH = bar(edges+binSize/2, [Nf(:),Ns(:)], 'stacked');
-  set(bH, 'BarWidth', 1, ...
-          'LineStyle', 'none');
-  cMap = get(gcf, 'Colormap');
-  % flip colors, keep blue on top of red, note flipped in bar.m above
-  set(bH(1), 'FaceColor', [0.6 0 0]);
-  set(bH(2), 'FaceColor', [0 0 0.6]);      
-end
+%Ns = histc(rV(successIx), edges);
+%Nf = histc(rV(failureIx), edges);
+%if sum(Ns)+sum(Nf) > 0
+%  bH = bar(edges+binSize/2, [Nf(:),Ns(:)], 'stacked');
+%  set(bH, 'BarWidth', 1, ...
+%          'LineStyle', 'none');
+%  cMap = get(gcf, 'Colormap');
+%  % flip colors, keep blue on top of red, note flipped in bar.m above
+%  set(bH(1), 'FaceColor', [0.6 0 0]);
+%  set(bH(2), 'FaceColor', [0 0 0.6]);      
+%end
 
-hold on;
-yLim = get(gca, 'YLim');
-plot([0 0], yLim, 'k');
-%set(gca, 'XLim', [-1010 1010]);
-set(gca, 'XLim', [0 input.reactTimeMs]);
-title('reaction times');
+%hold on;
+%yLim = get(gca, 'YLim');
+%plot([0 0], yLim, 'k');
+%set(gca, 'XLim', [0 input.reactTimeMs]);
+%title('reaction times');
 %%%%%%%%%%%%%%%%
 
 %% 4 - smoothed perf curve
@@ -125,12 +126,9 @@ axH = subplot(spSz{:},2);
 hold on;
 %plot(smooth(double(successIx), ceil(nTrial/10), 'lowess'));
 plot(smooth1(double(successIx), 'gauss', [2], 3));
-%lH = plot(smooth(double(successIx), nTrial, 'lowess'));
-lH = plot(smooth1(double(successIx), 'gauss', [2], 3));
-set(lH, 'Color', 'r', ...
-        'LineWidth', 3);
-%lH2 = plot(smooth(double(successIx), 100, 'lowess'));
-lH2 = plot(smooth1(double(successIx), 'gauss', [2], 3));
+lH = plot(smooth1(double(successIx), 'gauss', [8], 16));
+set(lH, 'Color', 'r', 'LineWidth', 3);
+lH2 = plot(smooth1(double(successIx), 'gauss', [16], 32));
 set(lH2, 'Color', 'k', 'LineWidth', 2);
 ylabel('pct correct');
 set(gca, 'YLim', [0 1]);
