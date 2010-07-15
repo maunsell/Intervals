@@ -79,7 +79,7 @@
         </folder>
     </variables>
     <sounds _id="id39637423" tag="Sounds">
-        <sound _id="id39637426" tag="leverPressSound" type="wav_file" path="/Users/maunsell/Documents/Development/MonkeyWorks/XML/Intervals/wavs/200msSq.wav"></sound>
+        <sound _id="id39637426" tag="leverPressSound" type="wav_file" path="wavs/200msSq.wav"></sound>
         <sound _id="id39637434" tag="waitingForLeverSound" type="wav_file" path="wavs/trialStart-F10e-short.wav"></sound>
         <sound _id="id39637441" tag="correctSound" type="wav_file" path="wavs/shortCorrect.wav"></sound>
         <sound _id="id39637449" tag="incorrectSound" type="wav_file" path="wavs/incorrectMouse.wav"></sound>
