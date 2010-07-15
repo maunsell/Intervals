@@ -15,6 +15,8 @@ ds = data_struct;
 % debug
 %dumpEvents(ds); 
 
+warning off MATLAB:dispatcher:nameConflict;
+
 % First call after pressing "play" in client
 
 if nargin == 1 || ~isfield(input, 'trialSinceReset')	% initialize on first pass
