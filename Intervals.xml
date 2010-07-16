@@ -1,286 +1,286 @@
 <?xml version="1.0"?>
 <monkeyml version="1.0">
-    <io_devices _id="id39636599" tag="IO Devices">
-        <iodevice _id="id39636602" tag="LabJackU6" priority="" type="LabJackU6" pulse_duration="juice" pulse_on="juice" lever_press="FIO1" alt="" lever_solenoid="FIO2"></iodevice>
+    <io_devices tag="IO Devices">
+        <iodevice tag="LabJackU6" priority="" type="LabJackU6" pulse_duration="juice" pulse_on="juice" lever_press="FIO1" alt="" lever_solenoid="FIO2"></iodevice>
     </io_devices>
-    <variables _id="id39636620" tag="Variables">
-        <folder _id="id39636624" tag="Behavioral Control">
-            <variable _id="id39636627" tag="subjectNum" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
-            <variable _id="id39636641" tag="tooFastTimeMs" scope="global" logging="when_changed" default_value="100" type="integer" persistant="1"></variable>
-            <variable _id="id39636655" tag="doWaitForUp" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
-            <variable _id="id39636669" tag="doAuditoryWaitingForStim" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
-            <variable _id="id39636683" tag="doLeverSolenoid" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
-            <variable _id="id39636697" tag="doHoldTone" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
-            <variable _id="id39636711" tag="holdRepeatIntervalMs" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
-            <variable _id="id39636725" tag="reactTimeMs" scope="global" logging="when_changed" default_value="1250" type="integer" persistant="1"></variable>
-            <variable _id="id39636739" tag="react1TimeMS" scope="global" logging="when_changed" default_value="250" type="integer" persistant="1"></variable>
-            <variable _id="id39636751" tag="react1DurMS" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
-            <variable _id="id39636763" tag="react2TimeMS" scope="global" logging="when_changed" default_value="1000" type="integer" persistant="1"></variable>
-            <variable _id="id39636775" tag="react2DurMS" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
-            <variable _id="id39636787" tag="rewardMS" scope="global" logging="when_changed" default_value="50" type="integer" persistant="1"></variable>
-            <variable _id="id39636799" tag="reward1MS" scope="global" logging="when_changed" default_value="75" type="integer" persistant="1"></variable>
-            <variable _id="id39636810" tag="reward2MS" scope="global" logging="when_changed" default_value="75" type="integer" persistant="1"></variable>
-            <variable _id="id39636822" tag="randReqHoldMaxMs" scope="global" logging="when_changed" default_value="300" type="integer" persistant="1"></variable>
-            <variable _id="id39636836" tag="fixedReqHoldTimeMs" scope="global" logging="when_changed" default_value="400" type="integer" persistant="1"></variable>
-            <variable _id="id39636851" tag="earlyTimeoutMs" scope="global" logging="when_changed" default_value="200" type="integer" persistant="1"></variable>
-            <variable _id="id39636865" tag="leverDownTimeMS" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39636876" tag="missedTimeoutMs" scope="global" logging="when_changed" default_value="2000" type="integer" persistant="1"></variable>
-            <variable _id="id39636890" tag="itiTimeMs" scope="global" logging="when_changed" default_value="750" type="integer" persistant="1"></variable>
-            <variable _id="id39636904" tag="postRewardMs" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
-            <variable _id="id39636918" tag="minRewardUs" scope="global" logging="when_changed" default_value="20000" type="integer" persistant="1"></variable>
-            <variable _id="id39636932" tag="maxRewardUs" scope="global" logging="when_changed" default_value="20000" type="integer" persistant="1"></variable>
-            <variable _id="id39636946" tag="interRewardIntervalMs" scope="global" logging="when_changed" default_value="200" type="integer" persistant="1"></variable>
-            <variable _id="id39636961" tag="maxConsecCorrects" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
-            <variable _id="id39636975" tag="jackpotProb" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
-            <variable _id="id39636989" tag="jackpotRewardSizeUs" scope="global" logging="when_changed" default_value="100000" type="integer" persistant="1"></variable>
+    <variables tag="Variables">
+        <folder tag="Behavioral Control">
+            <variable tag="subjectNum" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
+            <variable tag="tooFastTimeMs" scope="global" logging="when_changed" default_value="100" type="integer" persistant="1"></variable>
+            <variable tag="doWaitForUp" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="doAuditoryWaitingForStim" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="doLeverSolenoid" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
+            <variable tag="doHoldTone" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
+            <variable tag="holdRepeatIntervalMs" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
+            <variable tag="reactTimeMs" scope="global" logging="when_changed" default_value="1250" type="integer" persistant="1"></variable>
+            <variable tag="react1TimeMS" scope="global" logging="when_changed" default_value="250" type="integer" persistant="1"></variable>
+            <variable tag="react1DurMS" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
+            <variable tag="react2TimeMS" scope="global" logging="when_changed" default_value="1000" type="integer" persistant="1"></variable>
+            <variable tag="react2DurMS" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
+            <variable tag="rewardMS" scope="global" logging="when_changed" default_value="50" type="integer" persistant="1"></variable>
+            <variable tag="reward1MS" scope="global" logging="when_changed" default_value="75" type="integer" persistant="1"></variable>
+            <variable tag="reward2MS" scope="global" logging="when_changed" default_value="75" type="integer" persistant="1"></variable>
+            <variable tag="randReqHoldMaxMs" scope="global" logging="when_changed" default_value="300" type="integer" persistant="1"></variable>
+            <variable tag="fixedReqHoldTimeMs" scope="global" logging="when_changed" default_value="400" type="integer" persistant="1"></variable>
+            <variable tag="earlyTimeoutMs" scope="global" logging="when_changed" default_value="200" type="integer" persistant="1"></variable>
+            <variable tag="leverDownTimeMS" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="missedTimeoutMs" scope="global" logging="when_changed" default_value="2000" type="integer" persistant="1"></variable>
+            <variable tag="itiTimeMs" scope="global" logging="when_changed" default_value="750" type="integer" persistant="1"></variable>
+            <variable tag="postRewardMs" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
+            <variable tag="minRewardUs" scope="global" logging="when_changed" default_value="20000" type="integer" persistant="1"></variable>
+            <variable tag="maxRewardUs" scope="global" logging="when_changed" default_value="20000" type="integer" persistant="1"></variable>
+            <variable tag="interRewardIntervalMs" scope="global" logging="when_changed" default_value="200" type="integer" persistant="1"></variable>
+            <variable tag="maxConsecCorrects" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="jackpotProb" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
+            <variable tag="jackpotRewardSizeUs" scope="global" logging="when_changed" default_value="100000" type="integer" persistant="1"></variable>
         </folder>
-        <folder _id="id39637003" tag="Stimuli">
-            <variable _id="id39637006" tag="gratingAzimuthDeg" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
-            <variable _id="id39637020" tag="gratingDirectionDeg" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637032" tag="gratingElevationDeg" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
-            <variable _id="id39637046" tag="gratingHeightDeg" scope="global" logging="when_changed" default_value="5" type="integer" persistant="1"></variable>
-            <variable _id="id39637061" tag="gratingSpatialFreqCPD" scope="global" logging="when_changed" default_value="0.5" type="integer" persistant="1"></variable>
-            <variable _id="id39637075" tag="gratingSpeedDPS" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
-            <variable _id="id39637089" tag="gratingWidthDeg" scope="global" logging="when_changed" default_value="10" type="integer" persistant="1"></variable>
+        <folder tag="Stimuli">
+            <variable tag="gratingAzimuthDeg" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
+            <variable tag="gratingDirectionDeg" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="gratingElevationDeg" scope="global" logging="when_changed" default_value="0" type="integer" persistant="1"></variable>
+            <variable tag="gratingHeightDeg" scope="global" logging="when_changed" default_value="5" type="integer" persistant="1"></variable>
+            <variable tag="gratingSpatialFreqCPD" scope="global" logging="when_changed" default_value="0.5" type="integer" persistant="1"></variable>
+            <variable tag="gratingSpeedDPS" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="gratingWidthDeg" scope="global" logging="when_changed" default_value="10" type="integer" persistant="1"></variable>
         </folder>
-        <folder _id="id39637103" tag="Fake Mouse">
-            <variable _id="id39637106" tag="doLever" scope="global" logging="when_changed" default_value="1" type="boolean" persistant="1"></variable>
-            <variable _id="id39637120" tag="fakeMouseMaxPressMs" scope="global" logging="when_changed" default_value="300" type="integer" persistant="1"></variable>
-            <variable _id="id39637134" tag="fakeMouseMaxReactMs" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
+        <folder tag="Fake Mouse">
+            <variable tag="doLever" scope="global" logging="when_changed" default_value="1" type="boolean" persistant="1"></variable>
+            <variable tag="fakeMouseMaxPressMs" scope="global" logging="when_changed" default_value="300" type="integer" persistant="1"></variable>
+            <variable tag="fakeMouseMaxReactMs" scope="global" logging="when_changed" default_value="500" type="integer" persistant="1"></variable>
         </folder>
-        <folder _id="id39637148" tag="Task Status">
-            <variable _id="id39637152" tag="failure" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637164" tag="ignore" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637175" tag="leverResult" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
-            <variable _id="id39637187" tag="stimulusOn" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
-            <variable _id="id39637199" tag="success" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637211" tag="trialStart" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
-            <variable _id="id39637223" tag="stateTrace" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+        <folder tag="Task Status">
+            <variable tag="failure" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="ignore" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="leverResult" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+            <variable tag="stimulusOn" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+            <variable tag="success" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="trialStart" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+            <variable tag="stateTrace" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
         </folder>
-        <folder _id="id39637235" tag="Online Display">
-            <variable _id="id39637238" tag="sync" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+        <folder tag="Online Display">
+            <variable tag="sync" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
         </folder>
-        <folder _id="id39637250" tag="Hardware variables">
-            <variable _id="id39637253" tag="FIO1" full_name="FIO1" default_value="0" scope="GLOBAL" type="INTEGER" editable="never" logging="when_changed"></variable>
-            <variable _id="id39637270" tag="FIO2" full_name="FIO1" default_value="0" scope="GLOBAL" type="boolean" editable="never" logging="when_changed"></variable>
-            <variable _id="id39637286" tag="juice" full_name="juice" scope="GLOBAL" logging="when_changed" default_value="0" type="integer"></variable>
+        <folder tag="Hardware variables">
+            <variable tag="FIO1" full_name="FIO1" default_value="0" scope="GLOBAL" type="INTEGER" editable="never" logging="when_changed"></variable>
+            <variable tag="FIO2" full_name="FIO1" default_value="0" scope="GLOBAL" type="boolean" editable="never" logging="when_changed"></variable>
+            <variable tag="juice" full_name="juice" scope="GLOBAL" logging="when_changed" default_value="0" type="integer"></variable>
         </folder>
-        <folder _id="id39637300" tag="Internal Variables">
-            <variable _id="id39637303" tag="tTotalReqHoldTimeMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637315" tag="tTotalRewardTimeUs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637327" tag="tRandReqHoldTimeMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637339" tag="tFakeMouseReactMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637351" tag="consecCorrects" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637363" tag="tNRewards" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637375" tag="tInterRewardIntervalMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637387" tag="tRewardAddPerMsHoldUs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637399" tag="tResponseTimeMS" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
-            <variable _id="id39637411" tag="tIsJackpot" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+        <folder tag="Internal Variables">
+            <variable tag="tTotalReqHoldTimeMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tTotalRewardTimeUs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tRandReqHoldTimeMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tFakeMouseReactMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="consecCorrects" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tNRewards" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tInterRewardIntervalMs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tRewardAddPerMsHoldUs" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tResponseTimeMS" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="tIsJackpot" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
         </folder>
     </variables>
-    <sounds _id="id39637423" tag="Sounds">
-        <sound _id="id39637426" tag="leverPressSound" type="wav_file" path="wavs/200msSq.wav"></sound>
-        <sound _id="id39637434" tag="waitingForLeverSound" type="wav_file" path="wavs/trialStart-F10e-short.wav"></sound>
-        <sound _id="id39637441" tag="correctSound" type="wav_file" path="wavs/shortCorrect.wav"></sound>
-        <sound _id="id39637449" tag="incorrectSound" type="wav_file" path="wavs/incorrectMouse.wav"></sound>
-        <sound _id="id39637457" tag="holdSound" type="wav_file" path="wavs/quietHold.wav"></sound>
-        <sound _id="id39637465" tag="rewardSound" type="wav_file" path="wavs/shortCorrect.wav"></sound>
+    <sounds tag="Sounds">
+        <sound tag="leverPressSound" type="wav_file" path="wavs/200msSq.wav"></sound>
+        <sound tag="waitingForLeverSound" type="wav_file" path="wavs/trialStart-F10e-short.wav"></sound>
+        <sound tag="correctSound" type="wav_file" path="wavs/shortCorrect.wav"></sound>
+        <sound tag="incorrectSound" type="wav_file" path="wavs/incorrectMouse.wav"></sound>
+        <sound tag="holdSound" type="wav_file" path="wavs/quietHold.wav"></sound>
+        <sound tag="rewardSound" type="wav_file" path="wavs/shortCorrect.wav"></sound>
     </sounds>
-    <stimuli _id="id39637472" tag="Stimuli">
-        <stimulus _id="id39637476" type="rectangle" tag="testRect" color="1,1,1" x_size="50" y_size="50" x_position="0" y_position="0" rotation="0" contrast="1"></stimulus>
-        <stimulus _id="id39637496" type="image_file" tag="imageStimulus" path="images/big-sin-grating-ori90-sf200.png" x_size="40" y_size="40" x_position="0.0" y_position="0.0" rotation="0.0" alpha_multiplier="1.0"></stimulus>
-        <stimulus _id="id39637517" type="blank_screen" tag="brightBackground" color="0.5,0.5,0.5"></stimulus>
+    <stimuli tag="Stimuli">
+        <stimulus type="rectangle" tag="testRect" color="1,1,1" x_size="50" y_size="50" x_position="0" y_position="0" rotation="0" contrast="1"></stimulus>
+        <stimulus type="image_file" tag="imageStimulus" path="images/big-sin-grating-ori90-sf200.png" x_size="40" y_size="40" x_position="0.0" y_position="0.0" rotation="0.0" alpha_multiplier="1.0"></stimulus>
+        <stimulus type="blank_screen" tag="brightBackground" color="0.5,0.5,0.5"></stimulus>
     </stimuli>
-    <experiment _id="id39637525" tag="Experiment" full_name="DigitalInExample">
-        <protocol _id="id39637530" tag="JuiceOnHoldProtocol" full_name="Protocol" interruptable="YES" selection="sequential_ascending" nsamples="1" sampling_method="cycles" description="" interruptible="YES">
-            <action _id="id39637549" tag="Queue Stimulus" type="queue_stimulus" stimulus="brightBackground"></action>
-            <action _id="id39637556" tag="Update Stimulus 3" type="update_stimulus_display"></action>
-            <action _id="id39637562" type="assignment" tag="consecCorrects = 0" variable="consecCorrects" value="0"></action>
-            <task_system _id="id39637572" tag="Preamble" interruptible="YES">
-                <task_system_state _id="id39637578" tag="openITC" full_name="openITC" interruptable="YES" description="" interruptible="YES">
-                    <action _id="id39637590" type="assignment" tag="juice = 0" variable="juice" value="0"></action>
-                    <transition _id="id39637599" type="yield" tag="Exit Task System..."></transition>
+    <experiment tag="Experiment" full_name="DigitalInExample">
+        <protocol tag="JuiceOnHoldProtocol" full_name="Protocol" interruptable="YES" selection="sequential_ascending" nsamples="1" sampling_method="cycles" description="" interruptible="YES">
+            <action tag="Queue Stimulus" type="queue_stimulus" stimulus="brightBackground"></action>
+            <action tag="Update Stimulus 3" type="update_stimulus_display"></action>
+            <action type="assignment" tag="consecCorrects = 0" variable="consecCorrects" value="0"></action>
+            <task_system tag="Preamble" interruptible="YES">
+                <task_system_state tag="openITC" full_name="openITC" interruptable="YES" description="" interruptible="YES">
+                    <action type="assignment" tag="juice = 0" variable="juice" value="0"></action>
+                    <transition type="yield" tag="Exit Task System..."></transition>
                 </task_system_state>
             </task_system>
-            <trial _id="id39637605" tag="Trial" full_name="Trial" description="" interruptible="1" selection="sequential" nsamples="1000" sampling_method="cycles">
-                <task_system _id="id39637621" tag="TS" full_name="TS" interruptable="YES" description="" interruptible="YES" _error="Task Systems must contain at least one transition that yields to the Task System parent">
-                    <task_system_state _id="id39637636" tag="Intertrial" interruptible="YES">
-                        <action_marker _id="id39637641" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39637647" type="if" tag="If stateTrace Announce State" condition="stateTrace">
-                            <action _id="id39637654" type="report" tag="Announce State" message="Intertrial State"></action>
+            <trial tag="Trial" full_name="Trial" description="" interruptible="1" selection="sequential" nsamples="1000" sampling_method="cycles">
+                <task_system tag="TS" full_name="TS" interruptable="YES" description="" interruptible="YES" _error="Task Systems must contain at least one transition that yields to the Task System parent">
+                    <task_system_state tag="Intertrial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State" condition="stateTrace">
+                            <action type="report" tag="Announce State" message="Intertrial State"></action>
                         </action>
-                        <action _id="id39637662" type="assignment" tag="Set trialStart" variable="trialStart" value="1"></action>
-                        <action _id="id39637672" type="assignment" tag="Sync Matlab" variable="sync" value="1"></action>
-                        <action _id="id39637682" type="assignment" tag="juice = 0" variable="juice" value="0"></action>
-                        <action _id="id39637691" type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
-                        <action _id="id38801960" tag="Start IO Device" type="start_device_IO" device="LabJackU6"></action>
-                        <action _id="id39637709" type="start_timer" tag="Start interTrialTimer" timer="interTrialTimer" timebase="" duration="itiTimeMs" duration_units="ms"></action>
-                        <action _id="id39637723" type="assignment" tag="Clear stimulusOn" variable="stimulusOn" value="0"></action>
-                        <action _id="id39637733" type="assignment" tag="Compute tRewardAddPerMsHoldUs" variable="tRewardAddPerMsHoldUs" value="(maxRewardUs - minRewardUs) / ( randReqHoldMaxMs )"></action>
-                        <action _id="id39637743" type="assignment" tag="Compute tIsJackpot" variable="tIsJackpot" value="rand(0,1000) &lt; jackpotProb*1000"></action>
-                        <action _id="id39637753" type="if" tag="if doLeverSolenoid" condition="doLeverSolenoid">
-                            <action _id="id39637760" type="assignment" tag="lever Solenoid up" variable="FIO2" value="1"></action>
+                        <action type="assignment" tag="Set trialStart" variable="trialStart" value="1"></action>
+                        <action type="assignment" tag="Sync Matlab" variable="sync" value="1"></action>
+                        <action type="assignment" tag="juice = 0" variable="juice" value="0"></action>
+                        <action type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
+                        <action tag="Start IO Device" type="start_device_IO" device="LabJackU6"></action>
+                        <action type="start_timer" tag="Start interTrialTimer" timer="interTrialTimer" timebase="" duration="itiTimeMs" duration_units="ms"></action>
+                        <action type="assignment" tag="Clear stimulusOn" variable="stimulusOn" value="0"></action>
+                        <action type="assignment" tag="Compute tRewardAddPerMsHoldUs" variable="tRewardAddPerMsHoldUs" value="(maxRewardUs - minRewardUs) / ( randReqHoldMaxMs )"></action>
+                        <action type="assignment" tag="Compute tIsJackpot" variable="tIsJackpot" value="rand(0,1000) &lt; jackpotProb*1000"></action>
+                        <action type="if" tag="if doLeverSolenoid" condition="doLeverSolenoid">
+                            <action type="assignment" tag="lever Solenoid up" variable="FIO2" value="1"></action>
                         </action>
-                        <action _id="id39637770" type="if" tag="if !doAuditoryWaitingForStim" condition="doAuditoryWaitingForStim != 1">
-                            <action _id="id39637778" type="report" tag="************Error - doAuditoryWaitingForStim should always be on" message="InterTrial"></action>
+                        <action type="if" tag="if !doAuditoryWaitingForStim" condition="doAuditoryWaitingForStim != 1">
+                            <action type="report" tag="************Error - doAuditoryWaitingForStim should always be on" message="InterTrial"></action>
                         </action>
-                        <transition_marker _id="id39637786" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39637792" type="timer_expired" tag="If Expired, Go To WaitForUp" target="WaitForUp" timer="interTrialTimer"></transition>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="If Expired, Go To WaitForUp" target="WaitForUp" timer="interTrialTimer"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39637802" tag="WaitForUp" interruptible="YES">
-                        <action_marker _id="id39637807" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39637813" type="if" tag="If stateTrace Announce State 2" condition="stateTrace">
-                            <action _id="id39637820" type="report" tag="Announce State" message="WaitForUp State"></action>
+                    <task_system_state tag="WaitForUp" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State 2" condition="stateTrace">
+                            <action type="report" tag="Announce State" message="WaitForUp State"></action>
                         </action>
-                        <action _id="id39637828" type="if" tag="if doLeverSolenoid 2" condition="doLeverSolenoid">
-                            <action _id="id39637836" type="assignment" tag="lever Solenoid down" variable="FIO2" value="0"></action>
+                        <action type="if" tag="if doLeverSolenoid 2" condition="doLeverSolenoid">
+                            <action type="assignment" tag="lever Solenoid down" variable="FIO2" value="0"></action>
                         </action>
-                        <action _id="id39637846" type="if" tag="if doAuditoryWaitingForStim" condition="doAuditoryWaitingForStim">
-                            <action _id="id39637854" tag="Play waitingForLeverSound" type="play_sound" sound="waitingForLeverSound"></action>
+                        <action type="if" tag="if doAuditoryWaitingForStim" condition="doAuditoryWaitingForStim">
+                            <action tag="Play waitingForLeverSound" type="play_sound" sound="waitingForLeverSound"></action>
                         </action>
-                        <action _id="id39637861" type="start_timer" tag="Start Timer 2" timer="holdToneTimer" timebase="" duration="holdRepeatIntervalMs" duration_units="ms"></action>
-                        <transition_marker _id="id39637876" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39637881" type="conditional" tag="If LeverUp (and not fakeMouse) go to StartTrial 2" condition="FIO1 == 0 || doLever == 0 || doWaitForUp == 0" target="StartTrial"></transition>
-                        <transition _id="id39637892" type="timer_expired" tag="If Timer Expired, Go To PlayHoldTone" target="PlayHoldTone" timer="holdToneTimer"></transition>
+                        <action type="start_timer" tag="Start Timer 2" timer="holdToneTimer" timebase="" duration="holdRepeatIntervalMs" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If LeverUp (and not fakeMouse) go to StartTrial 2" condition="FIO1 == 0 || doLever == 0 || doWaitForUp == 0" target="StartTrial"></transition>
+                        <transition type="timer_expired" tag="If Timer Expired, Go To PlayHoldTone" target="PlayHoldTone" timer="holdToneTimer"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39637902" tag="PlayHoldTone" interruptible="YES">
-                        <action_marker _id="id39637907" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39637913" type="if" tag="If stateTrace Announce State 3" condition="stateTrace">
-                            <action _id="id39637920" type="report" tag="Announce State" message="PlayHoldTone State"></action>
+                    <task_system_state tag="PlayHoldTone" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State 3" condition="stateTrace">
+                            <action type="report" tag="Announce State" message="PlayHoldTone State"></action>
                         </action>
-                        <action _id="id39637928" type="if" tag="if doHoldTone" condition="doHoldTone &amp;&amp; FIO1 == 1">
-                            <action _id="id39637936" tag="Play holdSound" type="play_sound" sound="holdSound"></action>
+                        <action type="if" tag="if doHoldTone" condition="doHoldTone &amp;&amp; FIO1 == 1">
+                            <action tag="Play holdSound" type="play_sound" sound="holdSound"></action>
                         </action>
-                        <action _id="id39637943" type="start_timer" tag="Start Timer" timer="holdToneTimer" timebase="" duration="holdRepeatIntervalMs" duration_units="ms"></action>
-                        <transition_marker _id="id39637958" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39637963" type="conditional" tag="If LeverUp (and not fakeMouse) go to StartTrial" condition="FIO1 == 0 || doLever == 0 || doWaitForUp == 0" target="StartTrial"></transition>
-                        <transition _id="id39637973" type="timer_expired" tag="If Timer Expired, Repeat this" target="PlayHoldTone" timer="holdToneTimer"></transition>
+                        <action type="start_timer" tag="Start Timer" timer="holdToneTimer" timebase="" duration="holdRepeatIntervalMs" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If LeverUp (and not fakeMouse) go to StartTrial" condition="FIO1 == 0 || doLever == 0 || doWaitForUp == 0" target="StartTrial"></transition>
+                        <transition type="timer_expired" tag="If Timer Expired, Repeat this" target="PlayHoldTone" timer="holdToneTimer"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39637983" tag="StartTrial" interruptible="YES">
-                        <action_marker _id="id39637989" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39637994" type="if" tag="If stateTrace Announce State 4" condition="stateTrace">
-                            <action _id="id39638002" type="report" tag="Announce State" message="StartTrial State"></action>
+                    <task_system_state tag="StartTrial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State 4" condition="stateTrace">
+                            <action type="report" tag="Announce State" message="StartTrial State"></action>
                         </action>
-                        <action _id="id39638010" type="if" tag="if fakeMouse" condition="!doLever">
-                            <action _id="id39638017" type="start_timer" tag="Start Fake Mouse Press Timer" timer="fakeMousePressTimer" timebase="" duration="rand(0, fakeMouseMaxPressMs)" duration_units="ms"></action>
-                            <action _id="id39638032" type="report" tag="Announce Fake Mouse Active" message="Fake Mouse Active"></action>
+                        <action type="if" tag="if fakeMouse" condition="!doLever">
+                            <action type="start_timer" tag="Start Fake Mouse Press Timer" timer="fakeMousePressTimer" timebase="" duration="rand(0, fakeMouseMaxPressMs)" duration_units="ms"></action>
+                            <action type="report" tag="Announce Fake Mouse Active" message="Fake Mouse Active"></action>
                         </action>
-                        <transition_marker _id="id39638040" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638045" type="conditional" tag="If Lever Down, Go To LeverDown" condition="FIO1 == 1" target="LeverDown"></transition>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If Lever Down, Go To LeverDown" condition="FIO1 == 1" target="LeverDown"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39638055" tag="LeverDown" interruptible="YES">
-                        <action_marker _id="id39638061" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39638066" type="if" tag="If stateTrace Announce State 8" condition="stateTrace">
-                            <action _id="id39638074" type="report" tag="Announce State" message="LeverDown State"></action>
+                    <task_system_state tag="LeverDown" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State 8" condition="stateTrace">
+                            <action type="report" tag="Announce State" message="LeverDown State"></action>
                         </action>
-                        <action _id="id39638082" type="assignment" tag="Set leverDownTime" variable="leverDownTimeMS" value="now() / 1000"></action>
-                        <action _id="id39638091" type="assignment" tag="leverResult = 1" variable="leverResult" value="1"></action>
-                        <action _id="id39638101" tag="Play Lever Press Sound" type="play_sound" sound="leverPressSound"></action>
-                        <action _id="id39638109" tag="Queue Stimulus" type="queue_stimulus" stimulus="imageStimulus"></action>
-                        <action _id="id39638116" tag="Update Stimulus" type="update_stimulus_display"></action>
-                        <action _id="id39638122" type="assignment" tag="Set StimulusOn" variable="stimulusOn" value="1"></action>
-                        <action _id="id39638132" type="if" tag="if fakeMouse" condition="!doLever">
-                            <action _id="id39638139" type="assignment" tag="Assign tFakeMouseReactMs" variable="tFakeMouseReactMs" value="rand(0, fakeMouseMaxReactMs)"></action>
-                            <action _id="id39638150" type="start_timer" tag="Start Fake Mouse Timer" timer="fakeMouseTimer" timebase="" duration="tFakeMouseReactMs" duration_units="ms"></action>
-                            <action _id="id39638164" tag="Report FakeMouseTimer" full_name="Report Press" type="report" message="fake mouse to react in $tFakeMouseReactMs ms"></action>
+                        <action type="assignment" tag="Set leverDownTime" variable="leverDownTimeMS" value="now() / 1000"></action>
+                        <action type="assignment" tag="leverResult = 1" variable="leverResult" value="1"></action>
+                        <action tag="Play Lever Press Sound" type="play_sound" sound="leverPressSound"></action>
+                        <action tag="Queue Stimulus" type="queue_stimulus" stimulus="imageStimulus"></action>
+                        <action tag="Update Stimulus" type="update_stimulus_display"></action>
+                        <action type="assignment" tag="Set StimulusOn" variable="stimulusOn" value="1"></action>
+                        <action type="if" tag="if fakeMouse" condition="!doLever">
+                            <action type="assignment" tag="Assign tFakeMouseReactMs" variable="tFakeMouseReactMs" value="rand(0, fakeMouseMaxReactMs)"></action>
+                            <action type="start_timer" tag="Start Fake Mouse Timer" timer="fakeMouseTimer" timebase="" duration="tFakeMouseReactMs" duration_units="ms"></action>
+                            <action tag="Report FakeMouseTimer" full_name="Report Press" type="report" message="fake mouse to react in $tFakeMouseReactMs ms"></action>
                         </action>
-                        <action _id="id39638174" type="start_timer" tag="Start Too Fast Timer" timer="tooFastTimer" timebase="" duration="tooFastTimeMs" duration_units="ms"></action>
-                        <action _id="id39638188" type="start_timer" tag="Start React Timer" timer="reactTimeTimer" timebase="" duration="reactTimeMs" duration_units="ms"></action>
-                        <transition_marker _id="id39638202" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638208" type="conditional" tag="If Lever Up, Go To TooFast" condition="FIO1 == 0 &amp;&amp; doLever == 1" target="TooFast"></transition>
-                        <transition _id="id39638218" type="timer_expired" tag="if tooFastTimer expired, go to WaitRelease" target="WaitRelease" timer="tooFastTimer"></transition>
+                        <action type="start_timer" tag="Start Too Fast Timer" timer="tooFastTimer" timebase="" duration="tooFastTimeMs" duration_units="ms"></action>
+                        <action type="start_timer" tag="Start React Timer" timer="reactTimeTimer" timebase="" duration="reactTimeMs" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If Lever Up, Go To TooFast" condition="FIO1 == 0 &amp;&amp; doLever == 1" target="TooFast"></transition>
+                        <transition type="timer_expired" tag="if tooFastTimer expired, go to WaitRelease" target="WaitRelease" timer="tooFastTimer"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39638228" tag="WaitRelease" interruptible="YES">
-                        <action_marker _id="id39638233" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39638239" type="assignment" tag="tTotalReqHoldTime for Matlab (>?????)ß" variable="tTotalReqHoldTimeMs" value="1500"></action>
-                        <action _id="id39638249" type="if" tag="If stateTrace Announce State" condition="stateTrace">
-                            <action _id="id39638257" type="report" tag="Announce WaitRelease" message="WaitRelease State"></action>
+                    <task_system_state tag="WaitRelease" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="tTotalReqHoldTime for Matlab (>?????)ß" variable="tTotalReqHoldTimeMs" value="1500"></action>
+                        <action type="if" tag="If stateTrace Announce State" condition="stateTrace">
+                            <action type="report" tag="Announce WaitRelease" message="WaitRelease State"></action>
                         </action>
-                        <transition_marker _id="id39638265" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638270" type="timer_expired" tag="If Reaction Time up, Go To Failed" target="Failed" timer="reactTimeTimer"></transition>
-                        <transition _id="id39638280" type="conditional" tag="If Lever Up, Go To LeverReleased" condition="FIO1 == 0 &amp;&amp; doLever == 1" target="LeverReleased"></transition>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="If Reaction Time up, Go To Failed" target="Failed" timer="reactTimeTimer"></transition>
+                        <transition type="conditional" tag="If Lever Up, Go To LeverReleased" condition="FIO1 == 0 &amp;&amp; doLever == 1" target="LeverReleased"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39638290" tag="LeverReleased" interruptible="YES">
-                        <action_marker _id="id39638296" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39638301" type="if" tag="If stateTrace Announce LeverReleased" condition="stateTrace">
-                            <action _id="id39638309" type="report" tag="Announce LeverReleased" message="LeverReleased State"></action>
+                    <task_system_state tag="LeverReleased" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce LeverReleased" condition="stateTrace">
+                            <action type="report" tag="Announce LeverReleased" message="LeverReleased State"></action>
                         </action>
-                        <action _id="id39638317" type="assignment" tag="Set leverResult to 2" variable="leverResult" value="2"></action>
-                        <action _id="id39638327" type="assignment" tag="Get Response Time" variable="tResponseTimeMS" value="now() / 1000"></action>
-                        <action _id="id39638337" type="assignment" tag="Init Total Reward to Default" variable="tTotalRewardTimeUs" value="rewardMS * 1000"></action>
-                        <action _id="id39638347" type="if" tag="If In Interval 1" condition="(tResponseTimeMS > leverDownTimeMS + react1TimeMS) &amp;&amp; (tResponseTimeMS &lt;= leverDownTimeMS + react1TimeMS + react1DurMS)">
-                            <action _id="id39638356" type="assignment" tag="Set Reward to Interval 1 Reward" variable="tTotalRewardTimeUs" value="reward1MS * 1000"></action>
-                            <action _id="id39638366" type="report" tag="Report Interval 1" message="Interval 1"></action>
+                        <action type="assignment" tag="Set leverResult to 2" variable="leverResult" value="2"></action>
+                        <action type="assignment" tag="Get Response Time" variable="tResponseTimeMS" value="now() / 1000"></action>
+                        <action type="assignment" tag="Init Total Reward to Default" variable="tTotalRewardTimeUs" value="rewardMS * 1000"></action>
+                        <action type="if" tag="If In Interval 1" condition="(tResponseTimeMS > leverDownTimeMS + react1TimeMS) &amp;&amp; (tResponseTimeMS &lt;= leverDownTimeMS + react1TimeMS + react1DurMS)">
+                            <action type="assignment" tag="Set Reward to Interval 1 Reward" variable="tTotalRewardTimeUs" value="reward1MS * 1000"></action>
+                            <action type="report" tag="Report Interval 1" message="Interval 1 Reward"></action>
                         </action>
-                        <action _id="id39638373" type="if" tag="If In Interval 2" condition="(tResponseTimeMS > leverDownTimeMS + react2TimeMS) &amp;&amp; (tResponseTimeMS &lt;= leverDownTimeMS + react2TimeMS + react2DurMS)">
-                            <action _id="id39638382" type="assignment" tag="Set Reward to Interval 2 Reward" variable="tTotalRewardTimeUs" value="reward2MS * 1000"></action>
-                            <action _id="id39638392" type="report" tag="Report Interval" message="Interval 2"></action>
+                        <action type="if" tag="If In Interval 2" condition="(tResponseTimeMS > leverDownTimeMS + react2TimeMS) &amp;&amp; (tResponseTimeMS &lt;= leverDownTimeMS + react2TimeMS + react2DurMS)">
+                            <action type="assignment" tag="Set Reward to Interval 2 Reward" variable="tTotalRewardTimeUs" value="reward2MS * 1000"></action>
+                            <action type="report" tag="Report Interval" message="Interval 2 Reward"></action>
                         </action>
-                        <transition_marker _id="id39638400" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638405" type="direct" tag="Go To Correct" target="Correct"></transition>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Go To Correct" target="Correct"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39638413" tag="Correct" interruptible="YES">
-                        <action_marker _id="id39638419" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39638424" type="if" tag="If stateTrace Announce State 11" condition="stateTrace">
-                            <action _id="id39638432" type="report" tag="Announce State" message="Correct State"></action>
+                    <task_system_state tag="Correct" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State 11" condition="stateTrace">
+                            <action type="report" tag="Announce State" message="Correct State"></action>
                         </action>
-                        <action _id="id39638439" type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
-                        <action _id="id39638449" type="assignment" tag="success++" variable="success" value="success+1"></action>
-                        <action _id="id39638459" type="assignment" tag="consecCorrects++" variable="consecCorrects" value="consecCorrects + 1"></action>
-                        <action _id="id39638469" type="assignment" tag="Start reward" variable="juice" value="tTotalRewardTimeUs"></action>
-                        <action _id="id39638479" type="report" tag="Report Juice" message="juice = $juice"></action>
-                        <action _id="id39638486" tag="Play reward sound" type="play_sound" sound="rewardSound"></action>
-                        <action _id="id39638494" tag="Dequeue Stimulus 2" type="dequeue_stimulus" stimulus="imageStimulus"></action>
-                        <action _id="id39638502" tag="Update Stimulus 5" type="update_stimulus_display"></action>
-                        <action _id="id39638508" type="start_timer" tag="Start Post Reward Pause Timer" timer="postRewardPause" timebase="" duration="tTotalRewardTimeUs / 1000 + postRewardMs" duration_units="ms"></action>
-                        <transition_marker _id="id39638522" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638528" type="timer_expired" tag="If Timer Expired Go To EndTrial" target="EndTrial" timer="postRewardPause"></transition>
+                        <action type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
+                        <action type="assignment" tag="success++" variable="success" value="success+1"></action>
+                        <action type="assignment" tag="consecCorrects++" variable="consecCorrects" value="consecCorrects + 1"></action>
+                        <action type="assignment" tag="Start reward" variable="juice" value="tTotalRewardTimeUs"></action>
+                        <action type="report" tag="Report Juice" message="juice = $juice"></action>
+                        <action tag="Play reward sound" type="play_sound" sound="rewardSound"></action>
+                        <action tag="Dequeue Stimulus 2" type="dequeue_stimulus" stimulus="imageStimulus"></action>
+                        <action tag="Update Stimulus 5" type="update_stimulus_display"></action>
+                        <action type="start_timer" tag="Start Post Reward Pause Timer" timer="postRewardPause" timebase="" duration="tTotalRewardTimeUs / 1000 + postRewardMs" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="If Timer Expired Go To EndTrial" target="EndTrial" timer="postRewardPause"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39638538" tag="TooFast" interruptible="YES">
-                        <action_marker _id="id39638543" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39638549" type="if" tag="If stateTrace Announce State" condition="stateTrace">
-                            <action _id="id39638556" type="report" tag="Announce TooFast" message="Too Fast"></action>
+                    <task_system_state tag="TooFast" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State" condition="stateTrace">
+                            <action type="report" tag="Announce TooFast" message="Too Fast"></action>
                         </action>
-                        <action _id="id39638564" type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
-                        <action _id="id39638574" type="assignment" tag="failure++" variable="failure" value="failure+1"></action>
-                        <action _id="id39638584" type="assignment" tag="consecCorrects = 0" variable="consecCorrects" value="0"></action>
-                        <action _id="id39638593" tag="Play incorrectSound" type="play_sound" sound="incorrectSound"></action>
-                        <action _id="id39638601" type="if" tag="if doLeverSolenoid 3" condition="doLeverSolenoid">
-                            <action _id="id39638609" type="assignment" tag="lever Solenoid up" variable="FIO2" value="1"></action>
+                        <action type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
+                        <action type="assignment" tag="failure++" variable="failure" value="failure+1"></action>
+                        <action type="assignment" tag="consecCorrects = 0" variable="consecCorrects" value="0"></action>
+                        <action tag="Play incorrectSound" type="play_sound" sound="incorrectSound"></action>
+                        <action type="if" tag="if doLeverSolenoid 3" condition="doLeverSolenoid">
+                            <action type="assignment" tag="lever Solenoid up" variable="FIO2" value="1"></action>
                         </action>
-                        <action _id="id39638619" tag="Dequeue Stimulus 0" type="dequeue_stimulus" stimulus="imageStimulus"></action>
-                        <action _id="id39638627" tag="Update Stimulus 2" type="update_stimulus_display"></action>
-                        <action _id="id39638632" type="start_timer" tag="Start earlyTimeoutTimer" timer="earlyTimeoutTimer" timebase="" duration="earlyTimeoutMs" duration_units="ms"></action>
-                        <transition_marker _id="id39638647" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638652" type="timer_expired" tag="If earlyTimeoutTimer expired go to EndTrial" target="EndTrial" timer="earlyTimeoutTimer"></transition>
+                        <action tag="Dequeue Stimulus 0" type="dequeue_stimulus" stimulus="imageStimulus"></action>
+                        <action tag="Update Stimulus 2" type="update_stimulus_display"></action>
+                        <action type="start_timer" tag="Start earlyTimeoutTimer" timer="earlyTimeoutTimer" timebase="" duration="earlyTimeoutMs" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="If earlyTimeoutTimer expired go to EndTrial" target="EndTrial" timer="earlyTimeoutTimer"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39638662" tag="Failed" interruptible="YES">
-                        <action_marker _id="id39638668" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39638673" type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
-                        <action _id="id39638683" type="assignment" tag="ignore++" variable="ignore" value="ignore + 1"></action>
-                        <action _id="id39638693" type="assignment" tag="consecCorrects = 0" variable="consecCorrects" value="0"></action>
-                        <action _id="id39638703" tag="Report 4" full_name="ReportDigital" type="report" message="Failed"></action>
-                        <action _id="id39638712" tag="Play incorrectSound 2" type="play_sound" sound="incorrectSound"></action>
-                        <action _id="id39638720" type="start_timer" tag="start timer" timer="missedTimeoutTimer" timebase="" duration="missedTimeoutMs" duration_units="ms"></action>
-                        <action _id="id39638734" type="if" tag="if doLeverSolenoid 4" condition="doLeverSolenoid">
-                            <action _id="id39638742" type="assignment" tag="lever Solenoid up" variable="FIO2" value="1"></action>
+                    <task_system_state tag="Failed" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="leverResult = 0" variable="leverResult" value="0"></action>
+                        <action type="assignment" tag="ignore++" variable="ignore" value="ignore + 1"></action>
+                        <action type="assignment" tag="consecCorrects = 0" variable="consecCorrects" value="0"></action>
+                        <action tag="Report 4" full_name="ReportDigital" type="report" message="Failed"></action>
+                        <action tag="Play incorrectSound 2" type="play_sound" sound="incorrectSound"></action>
+                        <action type="start_timer" tag="start timer" timer="missedTimeoutTimer" timebase="" duration="missedTimeoutMs" duration_units="ms"></action>
+                        <action type="if" tag="if doLeverSolenoid 4" condition="doLeverSolenoid">
+                            <action type="assignment" tag="lever Solenoid up" variable="FIO2" value="1"></action>
                         </action>
-                        <action _id="id39638752" tag="Dequeue Stimulus 1" type="dequeue_stimulus" stimulus="imageStimulus"></action>
-                        <action _id="id39638760" tag="Update Stimulus 4" type="update_stimulus_display"></action>
-                        <transition_marker _id="id39638766" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638771" type="timer_expired" tag="go to EndTrial" target="EndTrial" timer="missedTimeoutTimer"></transition>
+                        <action tag="Dequeue Stimulus 1" type="dequeue_stimulus" stimulus="imageStimulus"></action>
+                        <action tag="Update Stimulus 4" type="update_stimulus_display"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="go to EndTrial" target="EndTrial" timer="missedTimeoutTimer"></transition>
                     </task_system_state>
-                    <task_system_state _id="id39638781" tag="EndTrial" interruptible="YES">
-                        <action_marker _id="id39638787" _unmoveable="1" tag="Actions"></action_marker>
-                        <action _id="id39638792" type="if" tag="If stateTrace Announce State 12" condition="stateTrace">
-                            <action _id="id39638800" type="report" tag="Announce State" message="EndTrial State"></action>
+                    <task_system_state tag="EndTrial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="If stateTrace Announce State 12" condition="stateTrace">
+                            <action type="report" tag="Announce State" message="EndTrial State"></action>
                         </action>
-                        <action _id="id38803346" tag="Stop IO Device" type="stop_device_IO" device="LabJackU6"></action>
-                        <action _id="id39638815" tag="Dequeue Stimulus 0" type="dequeue_stimulus" stimulus="imageStimulus"></action>
-                        <action _id="id39638823" tag="Update Stimulus 2" type="update_stimulus_display"></action>
-                        <action _id="id39638829" type="assignment" tag="End Matlab Sync" variable="sync" value="0"></action>
-                        <transition_marker _id="id39638838" _unmoveable="1" tag="Transitions"></transition_marker>
-                        <transition _id="id39638844" type="direct" tag="Go To Intertrial" target="Intertrial"></transition>
+                        <action tag="Stop IO Device" type="stop_device_IO" device="LabJackU6"></action>
+                        <action tag="Dequeue Stimulus 0" type="dequeue_stimulus" stimulus="imageStimulus"></action>
+                        <action tag="Update Stimulus 2" type="update_stimulus_display"></action>
+                        <action type="assignment" tag="End Matlab Sync" variable="sync" value="0"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Go To Intertrial" target="Intertrial"></transition>
                     </task_system_state>
                 </task_system>
             </trial>
