@@ -1,4 +1,4 @@
-function plotOnlineHist(data_struct, input)
+function plotOnlineHist(data_struct, input, name)
 
 figNum = 4;
 
@@ -36,7 +36,7 @@ nIg = sum(ignoreIx);
 holdStarts = [input.holdStartsMs{:}];
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 1 - Performance Values
+% Performance Values
 
 if length(holdStarts) > 2
 	holdTimeMS = input.holdTimesMs{end};
@@ -50,6 +50,7 @@ if length(holdStarts) > 2
 	end
 	axH = subplot(spSz{:}, 1);						% default axes are 0 to 1
 	set(axH, 'Visible', 'off');
+	text(0.00, 1.25, name, 'FontWeight', 'bold', 'FontSize', 14);
 	text(0.00, 1.0, {'Subject:', 'Time working:', 'Reward volume:'});
 	text(0.60, 1.0, {sprintf('%d', input.subjectNum), ...
 		sprintf('%.0d m', ...
@@ -66,20 +67,10 @@ if length(holdStarts) > 2
 				input.react1TimeMS + input.react1DurMS), ...
 				sprintf('Interval 2: %d - %d ms', input.react2TimeMS, ...
 						input.react2TimeMS + input.react2DurMS)});
-
-%	if strcmp(outcomeString, 'correct')
-%		if holdTimeMS > input.react2TimeMS && ...
-%							holdTimeMS <= input.react2TimeMS + input.react2DurMS
-%			text(0, 0.22, 'Hit interval 2');
-%		elseif holdTimeMS > input.react1TimeMS && ...
-%						holdTimeMS <= input.react1TimeMS + input.react1DurMS
-%			text(0, 0.22, 'Hit interval 2');
-%		end
-%	end
 end			
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 2 - total hold time histogram
+% Hold time histogram
 
 axH = subplot(spSz{:}, 2);
 maxFail = max(holdV(find(failureIx)));
@@ -117,7 +108,7 @@ xlabel('time (ms)');
 plotIntervalLines(input, 'vertical');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 2 - react time CDF
+% Hold time CDF
 
 axH = subplot(spSz{:},5);
 cdfplot([input.holdTimesMs{:}]);
@@ -129,104 +120,53 @@ title('hold density function');
 hold on;
 plotIntervalLines(input, 'vertical');
 
-%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Percent Correct over trials
 
-%% 3 - react time PDF
-%axH = subplot(spSz{:},7);
-%numPoints = length(input.reactionTimesMS);
-%reactV = [input.reactionTimesMS{:}];
-%visIx = reactV<=maxX;
-%nVisPts = sum(visIx);
-%if nVisPts > 50
-%  binWidth = iqr(reactV(visIx))./nVisPts.^(1/3); % robust version of std
-%  nBins = ceil(2000./binWidth);
-%else
-%  nBins = 10;
-%end
-%edges = linspace(-1000, 1000, nBins);
-%binSize = edges(2)-edges(1);
-
-%emptyIx = cellfun(@isempty, input.reactionTimesMS);   % see above holdTimesM
-%if sum(emptyIx) > 0, input.reactionTimesMS{emptyIx} = NaN; end
-%rV = [input.reactionTimesMS{:}];
-
-%Ns = histc(rV(successIx), edges);
-%Nf = histc(rV(failureIx), edges);
-%if sum(Ns)+sum(Nf) > 0
-%  bH = bar(edges+binSize/2, [Nf(:),Ns(:)], 'stacked');
-%  set(bH, 'BarWidth', 1, ...
-%          'LineStyle', 'none');
-%  cMap = get(gcf, 'Colormap');
-%  % flip colors, keep blue on top of red, note flipped in bar.m above
-%  set(bH(1), 'FaceColor', [0.6 0 0]);
-%  set(bH(2), 'FaceColor', [0 0 0.6]);      
-%end
-
-%hold on;
-%yLim = get(gca, 'YLim');
-%plot([0 0], yLim, 'k');
-%set(gca, 'XLim', [0 input.reactTimeMs]);
-%title('reaction times');
-%%%%%%%%%%%%%%%%
-
-%% 4 - smoothed perf curve
 axH = subplot(spSz{:},3);
 hold on;
-%plot(smooth(double(successIx), ceil(nTrial/10), 'lowess'));
-plot(smooth1(double(successIx), 'gauss', [2], 3));
-lH = plot(smooth1(double(successIx), 'gauss', [8], 16));
-set(lH, 'Color', 'r', 'LineWidth', 3);
-lH2 = plot(smooth1(double(successIx), 'gauss', [16], 32));
-set(lH2, 'Color', 'k', 'LineWidth', 2);
-ylabel('pct correct');
+plot(smooth1(double(successIx), 'gauss', 3, 10));
+lH1 = plot(smooth1(double(successIx), 'gauss', max(1, numTrials / 45), max(numTrials / 15, 1)));
+set(lH1, 'Color', 'k', 'LineWidth', 2);
+ylabel('Percent correct');
 set(gca, 'YLim', [0 1]);
+xlabel('Trial number');
 
-%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Triallength over trials
 
-%% 6 - trial length plot
 axH = subplot(spSz{:},9);
 hold on;
-%pH=semilogy(diff(holdStarts)/1000);
 hSDiffsSec = diff(holdStarts)/1000;
 % make outliers a fixed value
 largeIx = hSDiffsSec >= 120;
 hSDiffsSec(largeIx) = 120;
 xs = 1:length(hSDiffsSec);
-pH1=plot(xs,hSDiffsSec);
+pH1 = plot(xs,hSDiffsSec);
 if sum(largeIx) > 0
-  pH2 = plot(xs(largeIx),hSDiffsSec(largeIx),'r.');  % outliers
+  pH2 = plot(xs(largeIx), hSDiffsSec(largeIx), 'r.');   % outliers
 end
-set(pH1, 'LineStyle', 'none', ...
-        'Marker', 'x');
-%pH2 = plot(smooth(hSDiffsSec, 5, 'lowess'), 'r');
+set(pH1, 'LineStyle', 'none', 'Marker', 'x');
 pH2 = plot(smooth1(hSDiffsSec, 'gauss', [2], 3), 'r');
 
-%plot(diff(holdStarts)/1000, 'x');
-ylabel('trial start time diff (s)');
+ylabel('Trial duraction (s)');
 xLim = get(gca, 'XLim');
-lH = plot(xLim, 20*[1 1], '--k');
+lH = plot(xLim, 20 * [1 1], '--k');
 set(gca,'YLim', [0 121]);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 5 - trials per unit time
+% Trials per minute
 
-axH = subplot(spSz{:},6);
+axH = subplot(spSz{:}, 6);
 hold on;
-%edges = linspace(min(holdStarts), max(holdStarts), 100);
-%trsPerMin = histc(edges, holdStarts);
-hSDiffsSec = diff(holdStarts)/1000;
-trsPerSec = 1./hSDiffsSec;
-trsPerMin = trsPerSec*60;
 
-xs = 1:length(hSDiffsSec);
-
-h1 = plot(xs, trsPerMin);
+trialsPerMin = 60000 ./ diff(holdStarts);
+%xs = 1:length(trialsPerMin);
+h1 = plot(trialsPerMin);
 set(h1, 'LineStyle', 'none', 'Marker', 'x', 'Color', 'b');
 hold on;
-%pH2 = plot(smooth(trsPerMin, 50, 'loess'));
-pH2 = plot(smooth1(trsPerMin, 'gauss', [8], 16));
+pH2 = plot(smooth1(trialsPerMin, 'gauss', [8], 16));
 set(pH2, 'Color', 'k','LineWidth', 3);
-
 
 % line
 xLim = get(gca, 'XLim');
@@ -234,20 +174,18 @@ lH = plot(xLim, 20*[1 1], '--k');
 
 set(gca,'YLim', [0 61]);
 
-xlabel('trial number');
+xlabel('Trial number');
 ylabel('Trials per min');
 
 nDiffs = length(hSDiffsSec);
-fN = max(1, nDiffs-5);  % if first 6 trials, start at 1
-title(sprintf('Last 6 (sec): %s', mat2str(round(hSDiffsSec(fN:end)))));
+fN = max(1, nDiffs-5);						% if first 6 trials, start at 1
+title(sprintf('Recent trials (s): %s', mat2str(round(hSDiffsSec(fN:end)))));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 6 - hold times over time
+% Hold time over trials
 
 axH = subplot(spSz{:}, 8);
 hold on;
-%hH(1) = plot(smooth(holdV, 50, 'loess'));
-%hH(2) = plot(smooth(holdV, 250, 'loess'));
 hH(1) = plot(smooth1(holdV, 'gauss', [2], 3));
 hH(2) = plot(smooth1(holdV, 'gauss', [8], 16));
 set(hH(2), 'Color', 'k', 'LineWidth', 3);
@@ -255,14 +193,6 @@ hRange = [0 prctile(holdV, 95)];
 set(gca, 'YLim', hRange);
 xlabel('trial number');
 ylabel('hold time (ms)');
-if nDiffs > 0
-  totalElapsedS = (input.holdStartsMs{end} - input.holdStartsMs{1})/1000;
-
-  %totalRewMs = sum([input.totalRewardTimesMs{successIx}]);
-  totalRewMs = sum(cat(2,input.juiceTimesMsCell{:}));
-  title(sprintf('Total elapsed: %d min; reward %.1fsec', ...
-                round(totalElapsedS/60), totalRewMs/1000));
-end
 plotIntervalLines(input, 'horizontal');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

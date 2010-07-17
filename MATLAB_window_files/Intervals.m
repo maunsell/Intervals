@@ -108,8 +108,9 @@ input.juiceTimesMsCell{thisTrialN} = juiceAmtsMs;
 try
   input = saveMatlabState(data_struct, input);
   tic
-  if mod(input.trialSinceReset, 3) == 0
-    plotOnlineHist(data_struct, input);
+  if mod(input.trialSinceReset, 3) == 1
+	[stack, i] = dbstack;
+	plotOnlineHist(data_struct, input, stack.name);
   end
   toc
 %%  input = testUpload(data_struct, input);
