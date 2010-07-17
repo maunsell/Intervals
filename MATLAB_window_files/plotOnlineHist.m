@@ -6,11 +6,19 @@ figNum = 4;
 figH = figure(figNum);
 clf;
 
+screenMarginPix = 25;
+screenMenuPix = 65;
+figureWidthPix = 780;
+figureHeightPix = 750;
+% 			  930 270 780 750];
 switch hostname
- case 'MaunsellMouse1'
-  figPos = [1111 338 806 768];
- otherwise
-  figPos = [930 270 780 750];
+case 'MaunsellMouse1'
+	figPos = [1111 338 806 768];
+otherwise
+	screen = get(0, 'ScreenSize')
+	figPos = [(screen(1) + screen(3)) - (figureWidthPix + screenMarginPix), ...
+			  (screen(2) + screen(4)) - (figureHeightPix + screenMarginPix + screenMenuPix), ...
+			  780, 750];
 end
 set(figH, 'Position', figPos);
 spSz = {3,3};
@@ -126,7 +134,7 @@ plotIntervalLines(input, 'vertical');
 axH = subplot(spSz{:},3);
 hold on;
 plot(smooth1(double(successIx), 'gauss', 3, 10));
-lH1 = plot(smooth1(double(successIx), 'gauss', max(1, numTrials / 45), max(numTrials / 15, 1)));
+lH1 = plot(smooth1(double(successIx), 'gauss', max(2, numTrials / 45), max(3, numTrials / 15)));
 set(lH1, 'Color', 'k', 'LineWidth', 2);
 ylabel('Percent correct');
 set(gca, 'YLim', [0 1]);
