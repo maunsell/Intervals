@@ -2,7 +2,7 @@ function [retval] = Intervals(data_struct, input)
 
 % This function processes event data and saves variables in input.
 % Then it calls plot functions in a
-% try-catch block so that errors in plot functions don't affect
+% try-catch block so that errors in plot functions do not affect
 % variable saving.
 %  MH 100115
 % $Id$
@@ -16,6 +16,7 @@ ds = data_struct;
 %dumpEvents(ds); 
 
 warning off MATLAB:dispatcher:nameConflict;
+figureNum = 4;
 
 % First call after pressing "play" in client
 
@@ -30,9 +31,16 @@ if nargin == 1 || ~isfield(input, 'trialSinceReset')	% initialize on first pass
     input.trialOutcomeCell = {};
     input.holdStartsMs = {};
     input.juiceTimesMsCell = {};
+	switch hostname
+	case 'MaunsellMouse1'
+		setFigurePosition(figureNum, 780, 750, 'east')
+	otherwise
+		setFigurePosition(figureNum, 780, 750, 'northeast');
+	end
+	clf;
 else
-  input.trialSinceReset = input.trialSinceReset+1;
-  assert(all(input.tooFastTimeMs > 1));
+	input.trialSinceReset = input.trialSinceReset+1;
+	assert(all(input.tooFastTimeMs > 1));
 end
 
 %% quick path check 
@@ -106,13 +114,15 @@ input.juiceTimesMsCell{thisTrialN} = juiceAmtsMs;
 
 %% run subfunctions
 try
-  input = saveMatlabState(data_struct, input);
-  tic
-if mod(input.trialSinceReset, 3) == 1 && input.trialSinceReset > 2
+	input = saveMatlabState(data_struct, input);
+	tic
+	if mod(input.trialSinceReset, 3) == 1 && input.trialSinceReset > 2
 	[stack, i] = dbstack;
 	plotOnlineHist(data_struct, input, stack.name);
-  end
-  toc
+%	addSaveButton(figureNum, input.subjectNum);
+end
+toc
+
 %%  input = testUpload(data_struct, input);
 catch ex
   disp('??? Error in subfunction; still saving variables for next trial')

@@ -1,26 +1,28 @@
 function plotOnlineHist(data_struct, input, name)
 
+clf;
 figNum = 4;
 
 %% draw figure
-figH = figure(figNum);
-clf;
+%figH = figure(figNum);
+%clf;
 
-screenMarginPix = 25;
-screenMenuPix = 65;
-figureWidthPix = 780;
-figureHeightPix = 750;
+%screenMarginPix = 25;
+%screenMenuPix = 22;
+%figureWidthPix = 780;
+%figureHeightPix = 750;
 % 			  930 270 780 750];
-switch hostname
-case 'MaunsellMouse1'
-	figPos = [1111 338 806 768];
-otherwise
-	screen = get(0, 'ScreenSize')
-	figPos = [(screen(1) + screen(3)) - (figureWidthPix + screenMarginPix), ...
-			  (screen(2) + screen(4)) - (figureHeightPix + screenMarginPix + screenMenuPix), ...
-			  780, 750];
-end
-set(figH, 'Position', figPos);
+%switch hostname
+%case 'MaunsellMouse1'
+%	figPos = [1111 338 806 768];
+%otherwise
+%	screen = get(0, 'ScreenSize')
+%	figPos = [(screen(1) + screen(3)) - (figureWidthPix + screenMarginPix), ...
+%			  (screen(2) + screen(4)) - (figureHeightPix + screenMarginPix + screenMenuPix), ...
+%			  780, 750];
+%end
+%set(figH, 'OuterPosition', figPos);
+
 spSz = {3,3};
 
 numPoints = length(input.holdTimesMs);
@@ -212,9 +214,10 @@ outName = sprintf('/Users/histed/behav-output/%s-behav-i%03d.pdf', ...
 epParams = { figNum, outName, 'FileFormat', 'pdf', ...
              'Size', [12 12], 'PrintUI', false };
 bH = uicontrol(figNum, 'Style', 'pushbutton', ...
-               'String', sprintf ('Save PDF figure : %s', outName), ...
+               'String', sprintf('Save PDF figure : %s', outName), ...
                'Units', 'pixels', 'Position', [5 5 450 20], ...
-               'Callback', {@saveButtonCb, epParams});
+              'Callback', {@saveButtonCb, epParams});
+display('added button');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -241,6 +244,7 @@ if ~isempty(value)
 end
 
 function saveButtonCb(hObject, eventdata, epParamsIn) 
+
 exportfigPrint(epParamsIn{:});
 
 %%%%%%%%%%%%%%%%
