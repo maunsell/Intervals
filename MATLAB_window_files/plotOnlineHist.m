@@ -3,26 +3,6 @@ function plotOnlineHist(data_struct, input, name)
 clf;
 figNum = 4;
 
-%% draw figure
-%figH = figure(figNum);
-%clf;
-
-%screenMarginPix = 25;
-%screenMenuPix = 22;
-%figureWidthPix = 780;
-%figureHeightPix = 750;
-% 			  930 270 780 750];
-%switch hostname
-%case 'MaunsellMouse1'
-%	figPos = [1111 338 806 768];
-%otherwise
-%	screen = get(0, 'ScreenSize')
-%	figPos = [(screen(1) + screen(3)) - (figureWidthPix + screenMarginPix), ...
-%			  (screen(2) + screen(4)) - (figureHeightPix + screenMarginPix + screenMenuPix), ...
-%			  780, 750];
-%end
-%set(figH, 'OuterPosition', figPos);
-
 spSz = {3,3};
 
 numPoints = length(input.holdTimesMs);
@@ -78,7 +58,40 @@ if length(holdStarts) > 2
 				sprintf('Interval 2: %d - %d ms', input.react2TimeMS, ...
 						input.react2TimeMS + input.react2DurMS)});
 end			
-		
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hits of Intervals
+
+axH = subplot(spSz{:}, 7);
+start2 = max(0, input.react2TimeMS);
+end2 = min(input.reactTimeMs, input.react2TimeMS + input.react2DurMS);
+dur2 = end2 - start2;
+start1 = max(0, input.react1TimeMS);
+end1 = min(input.reactTimeMs, input.react1TimeMS + input.react1DurMS);
+if end1 < start2 || start1 >= end2				% no overlap with 2
+	dur1 = end1 - start1;
+elseif start1 < start2 && end1 >= end2			% 2 contained within 1
+	dur1 = end1 - start1 - dur2;
+elseif start1 >= start2 && end1 < end2			% 1 contained within 2
+	dur1 = 0;
+elseif start1 < start2							% 1 started before 2 and end in 2
+	dur1 = start2 - start1;
+elseif end1 >= end2								% 1 starts in 2 and extends beyond
+	dur1 = end1 - end2
+end
+dur0 = input.reactTimeMs - dur1 - dur2;
+
+timeFractions = [dur0 / input.reactTimeMs, dur1 / input.reactTimeMs, dur2 / input.reactTimeMs];
+numResults = input.num0Interval + input.num1Interval + input.num2Interval;
+hits = [input.num0Interval / numResults, input.num1Interval / numResults, input.num2Interval / numResults];
+h = bar([1, 2], [timeFractions; hits], 0.5, 'stacked');
+set(h(1), 'facecolor', [0.4 0.4 0.4]);
+set(h(2), 'facecolor', [0.4 0.4 1.0]);
+set(h(3), 'facecolor', [1.0 0.4 0.4]);
+set(gca, 'YGrid', 'on');
+set(gca, 'XTickLabel', {'Durations', 'Hits'}, 'XLim', [0 3]);
+title('Response intervals');
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hold time histogram
 
@@ -108,7 +121,6 @@ if sum(Ns) + sum(Nf) > 0
 end
 hold on;
 xLim = [0 maxX + 50];
-%set(gca, 'XLim', xLim);
 set(gca, 'XLim', [0 input.reactTimeMs]);
 yLim = get(gca, 'YLim');
 
@@ -159,7 +171,8 @@ end
 set(pH1, 'LineStyle', 'none', 'Marker', 'x');
 pH2 = plot(smooth1(hSDiffsSec, 'gauss', [2], 3), 'r');
 
-ylabel('Trial duraction (s)');
+ylabel('Trial duration (s)');
+xlabel('Trial number');
 xLim = get(gca, 'XLim');
 lH = plot(xLim, 20 * [1 1], '--k');
 set(gca,'YLim', [0 121]);

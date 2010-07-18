@@ -25,6 +25,9 @@ if nargin == 1 || ~isfield(input, 'trialSinceReset')	% initialize on first pass
 	addpath('~/Library/Application Support/MWorks/MatlabToolbox/tools-mh');
 	addpath('~/Library/Application Support/MWorks/MatlabToolbox');
     input.trialSinceReset = 1;
+	input.num0Interval = 0;
+	input.num1Interval = 0;
+	input.num2Interval = 0;
     input.reactionTimesMS = {};
     input.holdTimesMs = {};
     input.tooFastTimeMs = [];
@@ -69,48 +72,45 @@ for iC = 1:nConsts
   end
 end
 
-%disp(input.reactTimeMs);
-
-%% process corrects
-if ~isempty(mwGetEventValue(ds.events, ds.event_codec, ...
-                             'success', [], 'ignoreMissing'))
-  input.trialOutcomeCell{input.trialSinceReset} = 'success';
-elseif ~isempty(mwGetEventValue(ds.events, ds.event_codec, ...
-                               'failure', [], 'ignoreMissing'))
-  input.trialOutcomeCell{input.trialSinceReset} = 'failure';  
-elseif ~isempty(mwGetEventValue(ds.events, ds.event_codec, ...
-                               'ignore', [], 'ignoreMissing'))  
-  input.trialOutcomeCell{input.trialSinceReset} = 'ignore';    
-else
-  disp('Error!  Missing trial outcome variable this trial');
-  input.trialOutcomeCell{input.trialSinceReset} = 'error-missing';      
-end
-
-thisTrialN = input.trialSinceReset;%length(input.trialOutcomeCell);
-
 %% process reaction times for this trial
 codes = [ds.events.event_code];
 
 stimOnUs = mwGetEventTime(ds.events, ds.event_codec, 'stimulusOn', 1);
 totalHoldTimeMs = mwGetEventValue(ds.events, ds.event_codec, 'tTotalReqHoldTimeMs');
-%trialStartUs = mwGetEventTime(ds.events, ds.event_codec, 'trialStart', 1);
 leverDownUs = mwGetEventTime(ds.events, ds.event_codec, 'leverResult', 1, 1);
 leverUpUs = mwGetEventTime(ds.events, ds.event_codec, 'leverResult', 2, 0);
 
-%reactTimeMs = (leverUpUs - stimOnUs) / 1000;
-holdTimeMs = (leverUpUs - leverDownUs) / 1000;
-%reactTimeMs = (holdTimeMs - totalHoldTimeMs);
-reactTimeMs = holdTimeMs;
-
-% add to array
+holdTimeMS = (leverUpUs - leverDownUs) / 1000;
+reactTimeMs = holdTimeMS;
 input.holdStartsMs{input.trialSinceReset} = leverDownUs/1000;
-input.holdTimesMs{input.trialSinceReset} = holdTimeMs;
+input.holdTimesMs{input.trialSinceReset} = holdTimeMS;
 input.reactionTimesMS{input.trialSinceReset} = reactTimeMs;
 
 % total reward times
+
 juiceAmtsUs = mwGetEventValue(ds.events, ds.event_codec, 'juice', 'all');
-juiceAmtsMs = juiceAmtsUs(juiceAmtsUs~=0)/1000;
-input.juiceTimesMsCell{thisTrialN} = juiceAmtsMs;
+juiceAmtsMs = juiceAmtsUs(juiceAmtsUs ~= 0) / 1000;
+input.juiceTimesMsCell{input.trialSinceReset} = juiceAmtsMs;
+
+%% process trial outcome
+
+if ~isempty(mwGetEventValue(ds.events, ds.event_codec, 'success', [], 'ignoreMissing'))
+  input.trialOutcomeCell{input.trialSinceReset} = 'success';
+	if holdTimeMS > input.react2TimeMS && holdTimeMS < input.react2TimeMS + input.react2DurMS
+		input.num2Interval = input.num2Interval + 1;
+	elseif holdTimeMS > input.react1TimeMS && holdTimeMS < input.react1TimeMS + input.react1DurMS
+		input.num1Interval = input.num1Interval + 1;
+	else
+		input.num0Interval = input.num0Interval + 1;
+	end
+elseif ~isempty(mwGetEventValue(ds.events, ds.event_codec, 'failure', [], 'ignoreMissing'))
+  input.trialOutcomeCell{input.trialSinceReset} = 'failure';  
+elseif ~isempty(mwGetEventValue(ds.events, ds.event_codec, 'ignore', [], 'ignoreMissing'))  
+  input.trialOutcomeCell{input.trialSinceReset} = 'ignore';    
+else
+  disp('Error!  Missing trial outcome variable this trial');
+  input.trialOutcomeCell{input.trialSinceReset} = 'error-missing';      
+end
 
 %% run subfunctions
 try
