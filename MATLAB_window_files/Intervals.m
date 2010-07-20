@@ -36,7 +36,7 @@ if nargin == 1 || ~isfield(input, 'trialSinceReset')	% initialize on first pass
     input.juiceTimesMsCell = {};
 	switch hostname
 	case 'MaunsellMouse1'
-		setFigurePosition(figureNum, 780, 750, 'east')
+		setFigurePosition(figureNum, 780, 750, 'east');
 	otherwise
 		setFigurePosition(figureNum, 780, 750, 'northeast');
 	end

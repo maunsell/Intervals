@@ -5,13 +5,17 @@ screenMenuPix = 22;
 
 figureHandle = figure(figureNum);
 clf;
-screen = get(0, 'ScreenSize');
-leftPix = screen(1) + screenMarginPix;
-bottomPix = screen(2) + screenMarginPix;
-rightPix = screen(3) - screenMarginPix;
-topPix = screen(4) - screenMarginPix - screenMenuPix;
-centerWidthPix = leftPix + (rightPix - leftPix) / 2;
-centerHeightPix = bottomPix + (topPix - bottomPix) / 2;
+screen = get(0, 'ScreenSize')
+monitors = get(0, 'MonitorPositions')
+
+% We are positioning on the main screen, which is the first entry in monitors
+
+leftPix = screen(1) + screenMarginPix
+rightPix = screen(1) + monitors(1, 3) - screenMarginPix
+bottomPix = screen(2) + screenMarginPix
+topPix = screen(2) + monitors(1, 4) - screenMarginPix - screenMenuPix
+centerWidthPix = leftPix + (rightPix - leftPix) / 2
+centerHeightPix = bottomPix + (topPix - bottomPix) / 2
 
 % set the origin (lower left window corner)
 
@@ -20,7 +24,7 @@ figurePos = [centerWidthPix - widthPix / 2, centerHeightPix - heightPix / 2];
 if strcmp(location, 'north')
 	figurePos = [centerWidthPix - widthPix / 2, topPix - heightPix];
 elseif strcmp(location, 'northeast')
-	figurePos = [rightPix - widthPix, topPix - heightPix];
+	figurePos = [rightPix - widthPix, topPix - heightPix]
 elseif strcmp(location, 'east')
 	figurePos = [rightPix - widthPix, centerHeightPix - heightPix / 2];
 elseif strcmp(location, 'southeast')
@@ -36,5 +40,5 @@ elseif strcmp(location, 'northwest')
 elseif strcmp(location, 'center')
 	figurePos = [centerWidthPix - widthPix / 2, centerHeightPix - heightPix / 2];
 end
-figurePos = [figurePos widthPix heightPix];
+figurePos = [figurePos widthPix heightPix]
 set(figureHandle, 'OuterPosition', figurePos);

@@ -124,7 +124,7 @@ xLim = [0 maxX + 50];
 set(gca, 'XLim', [0 input.reactTimeMs]);
 yLim = get(gca, 'YLim');
 
-title(sprintf('median hold %4.0f ms', median([input.holdTimesMs{:}])));
+title(sprintf('Median hold %4.0f ms', median([input.holdTimesMs{:}])));
 xlabel('time (ms)');
 
 plotIntervalLines(input, 'vertical');
@@ -137,8 +137,8 @@ cdfplot([input.holdTimesMs{:}]);
 grid off;
 set(gca, 'XLim', [0 input.reactTimeMs], 'YLim', [0 1]);
 xlabel('time (ms)');
-ylabel('hold times < time');
-title('hold density function');
+ylabel('Hold times < time');
+title('Hold density function');
 hold on;
 plotIntervalLines(input, 'vertical');
 
@@ -209,13 +209,13 @@ title(sprintf('Recent trials (s): %s', mat2str(round(hSDiffsSec(fN:end)))));
 
 axH = subplot(spSz{:}, 8);
 hold on;
-hH(1) = plot(smooth1(holdV, 'gauss', [2], 3));
+hH(1) = plot(smooth1(holdV, 'gauss', [4], 8));
 hH(2) = plot(smooth1(holdV, 'gauss', [8], 16));
 set(hH(2), 'Color', 'k', 'LineWidth', 3);
 hRange = [0 prctile(holdV, 95)];
 set(gca, 'YLim', hRange);
-xlabel('trial number');
-ylabel('hold time (ms)');
+xlabel('Trial number');
+ylabel('Hold time (ms)');
 plotIntervalLines(input, 'horizontal');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
